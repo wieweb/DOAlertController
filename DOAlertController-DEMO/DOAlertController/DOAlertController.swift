@@ -191,7 +191,7 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
     public var textFieldBorderColor = UIColor(red: 203.0/255, green: 203.0/255, blue: 203.0/255, alpha: 1.0)
     
     // TextFields
-    private(set) var textFields: [AnyObject]?
+    public private(set) var textFields: [AnyObject]?
     private let textFieldHeight: CGFloat = 30.0
     public var textFieldBgColor = UIColor.whiteColor()
     private let textFieldCornerRadius: CGFloat = 4.0
@@ -211,7 +211,7 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
     private var buttonMargin: CGFloat = 10.0
     
     // Actions
-    private(set) var actions: [AnyObject] = []
+    public private(set) var actions: [AnyObject] = []
     
     // Buttons
     private var buttons = [UIButton]()

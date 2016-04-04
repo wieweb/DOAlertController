@@ -58,6 +58,10 @@ class ViewController : UITableViewController, UITextFieldDelegate {
         // Add the action.
         alertController.addAction(cancelAction)
         
+        alertController.didDismissAlertController = { controller in
+            print("dismissed: \(controller)")
+        }
+        
         presentViewController(alertController, animated: true, completion: nil)
     }
     

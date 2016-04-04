@@ -165,6 +165,9 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
     private var innerContentWidth: CGFloat = 240.0
     private let actionSheetBounceHeight: CGFloat = 20.0
     
+    // dissmiss Callback
+    public var didDismissAlertController: ((controller: DOAlertController) -> Void)? = nil
+    
     // TextAreaScrollView
     private var textAreaScrollView = UIScrollView()
     private var textAreaHeight: CGFloat = 0.0
@@ -620,7 +623,11 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
         if (action.handler != nil) {
             action.handler(action)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) {
+            if let handler = self.didDismissAlertController {
+                handler(controller: self)
+            }
+        }
     }
     
     // Handle ContainerView tap gesture
@@ -630,7 +637,11 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
         if (action.handler != nil) {
             action.handler(action)
         }
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismissViewControllerAnimated(true) {
+            if let handler = self.didDismissAlertController {
+                handler(controller: self)
+            }
+        }
     }
     
     // UIColor -> UIImage
@@ -741,7 +752,11 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
     public func textFieldShouldReturn(textField: UITextField) -> Bool {
         if (textField.canResignFirstResponder()) {
             textField.resignFirstResponder()
-            self.dismissViewControllerAnimated(true, completion: nil)
+            self.dismissViewControllerAnimated(true) {
+                if let handler = self.didDismissAlertController {
+                    handler(controller: self)
+                }
+            }
         }
         return true
     }

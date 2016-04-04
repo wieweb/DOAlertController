@@ -1,4 +1,6 @@
 # DOAlertController
+![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)
+![Swift 2.2](https://img.shields.io/badge/Swift-2.2-orange.svg)
 
 Simple Alert View written in Swift, which can be used as a UIAlertController replacement.  
 It supports from iOS7! It is simple and easily customizable!
@@ -82,6 +84,15 @@ To install add the following line to your Podfile:
 ```
 pod 'DOAlertController'
 ```
+### Carthage
+
+Add the following line to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
+
+```
+github "wieweb/DOAlertController”
+```
+
+Then run `carthage update`.
 
 ## License
 This software is released under the MIT License, see LICENSE.txt.

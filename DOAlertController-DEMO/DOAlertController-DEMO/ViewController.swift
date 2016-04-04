@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DOAlertController
 
 class ViewController : UITableViewController, UITextFieldDelegate {
     // MARK: Properties
@@ -166,7 +167,7 @@ class ViewController : UITableViewController, UITextFieldDelegate {
             // Listen for changes to the text field's text so that we can toggle the current
             // action's enabled property based on whether the user has entered a sufficiently
             // secure entry.
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: "handleTextFieldTextDidChangeNotification:", name: UITextFieldTextDidChangeNotification, object: textField)
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(ViewController.handleTextFieldTextDidChangeNotification(_:)), name: UITextFieldTextDidChangeNotification, object: textField)
             
             textField.secureTextEntry = true
         }
@@ -238,7 +239,7 @@ class ViewController : UITableViewController, UITextFieldDelegate {
             textField.keyboardAppearance = UIKeyboardAppearance.Dark
             textField.returnKeyType = UIReturnKeyType.Next
             
-            var label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
+            let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
             label.text = "ID"
             label.font = UIFont(name: "GillSans-Bold", size: 15.0)
             textField.leftView = label
@@ -256,7 +257,7 @@ class ViewController : UITableViewController, UITextFieldDelegate {
             textField.keyboardAppearance = UIKeyboardAppearance.Dark
             textField.returnKeyType = UIReturnKeyType.Send
             
-            var label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
+            let label:UILabel = UILabel(frame: CGRectMake(0, 0, 50, 30))
             label.text = "PASS"
             label.font = UIFont(name: "GillSans-Bold", size: 15.0)
             textField.leftView = label
@@ -395,7 +396,7 @@ class ViewController : UITableViewController, UITextFieldDelegate {
         let textField = notification.object as! UITextField
         
         // Enforce a minimum length of >= 5 characters for secure text alerts.
-        secureTextAlertAction!.enabled = count(textField.text) >= 5
+        secureTextAlertAction!.enabled = textField.text?.characters.count >= 5
     }
     
     // MARK: UITextFieldDelegate Methods

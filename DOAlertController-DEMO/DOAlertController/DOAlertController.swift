@@ -518,7 +518,10 @@ public class DOAlertController : UIViewController, UITextFieldDelegate, UIViewCo
         var buttonAreaPositionY: CGFloat = buttonMargin
         
         // Buttons
-        if (isAlert() && buttons.count == 2) {
+        let shortButtonTexts: Bool = buttons.reduce(false) { (last, button) -> Bool in
+            return (button.titleLabel?.text ?? "").characters.count <= 7
+        }
+        if (isAlert() && buttons.count == 2 && shortButtonTexts) {
             let buttonWidth = (innerContentWidth - buttonMargin) / 2
             var buttonPositionX: CGFloat = 0.0
             for button in buttons {

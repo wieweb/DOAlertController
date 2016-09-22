@@ -77,13 +77,17 @@ alertController.buttonBgColorHighlighted[.Default] = UIColor(red:64/255, green:2
 // Destructive style : [.Default] → [.Destructive]
 ```
 
-## Installation
-DOAlertController is available through [CocoaPods](http://cocoapods.org).
+## Version Compatibility
 
-To install add the following line to your Podfile:
-```
-pod 'DOAlertController'
-```
+Current Swift compatibility breakdown:
+
+| Swift Version | Framework Version |
+| ------------- | ----------------- |
+| 3.0	        | master          	|
+| 2.3	        | 1.3          		|
+
+[all releases](https://github.com/wieweb/DOAlertController/releases)
+
 ### Carthage
 
 Add the following line to your [Cartfile](https://github.com/Carthage/Carthage/blob/master/Documentation/Artifacts.md#cartfile).
